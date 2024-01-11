@@ -13,12 +13,13 @@ const weather_details = document.querySelector("weather-details");
 
 
 function checkWeather(city) {
-    const api_key = "1d8e4f39672cb9d6c0a14c6809b6562a";
+    let api_key = "1d8e4f39672cb9d6c0a14c6809b6562a";
     // const api_key = "70602a130db9bf25e559f71133eeaa44";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
     // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city}&appid=${api_key}`;
 
     fetch(url).then(i => i.json()).then(data => {
+
 
 
         if (data.cod === `404`) {
@@ -45,35 +46,63 @@ function checkWeather(city) {
         pressure.innerHTML = `${data.main.pressure}hPa`;
         wind_speed.innerHTML = `${data.wind.speed}Km/h`;
 
+
+
+
         switch (data.weather[0].main) {
-            case "Clouds": 
+            case "Clouds":
                 weather_img.src = "cloud.png";
                 break;
             case "Clear":
-                weather_img.src = "clear.png"; 
+                weather_img.src = "clear.png";
                 break;
             case "Rain":
-                weather_img.src = "rain.png"; 
+                weather_img.src = "rain.png";
                 break;
-            case "Mist": 
-                weather_img.src = "mist.png"; 
+            case "Mist":
+                weather_img.src = "mist.png";
                 break;
-            case "Snow": 
-                weather_img.src = "snow.png"; 
+            case "Snow":
+                weather_img.src = "snow.png";
                 break;
             case "Smoke":
                 weather_img.src = "smoke.png";
                 break;
-            default: 
-                weather_img.src = "";
+            case "Haze":
+                weather_img.src = "haze.png";
                 break;
+            case "Fog":
+                weather_img.src = "fog.png";
+                break;
+            default:
+                weather_img.src = "";
+            // break;
 
         }
+
+
+
+
+        const latitude = `${data.coord.lat}`;
+        const longitude = `${data.coord.lon}`;
+        // console.log(latitude);
+        // console.log(longitude);
+        // const url2 = `api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
+        // fetch(url2).then(k => k.json()).then(data2 => {
+        //     console.log(data2);
+        // })
+
+
+
+
+
     })
+
 }
 
 
-searchBtn.addEventListener("click", () => {
+document.f1.addEventListener("submit", (e) => {
+    e.preventDefault();
     checkWeather(inputBox.value);
 })
 

@@ -4,19 +4,20 @@
     box-sizing: border-box;
 }
 body{
-    background: url(/img/bg.jpg)no-repeat center top/cover;
+    background: url(bg.jpg)no-repeat center top/cover;
     align-items: center;
     justify-content: center;
     display: flex;
     min-height: 100vh;
 }
 .container{
-    width: 600px;
+    width: 40%;
     background: radial-gradient(#d3d3fa,#f87d7d);
     height: min-content;
     border-radius: 12px;
     padding: 28px;
 }
+
 .search-box{    
     width: 100%;
     height: min-content;
@@ -61,7 +62,7 @@ body{
     margin-block: 20px;
 }
 .weather-box .temperature{
-    font-size: 40px;
+    font-size: 250%;
     font-weight: 800;
     position: relative;
 }
@@ -115,4 +116,25 @@ body{
 }
 .location-not-found img{
     width: 80%;
+}
+
+
+
+/* responsive */
+@media screen and (max-width:1220px) {
+    .container{width: 60%;}
+}
+
+@media screen and (max-width:980px) {
+    .search-box input{width: 80%;}
+}
+
+@media screen and (max-width:767px) {
+    .search-box button{display: none;}
+    .search-box input{width: 100%;}
+    .weather-details{display: block;}
+    .humidity,.pressure,.wind{justify-content: space-evenly;text-align: center;margin: 15px 0;}
+}
+@media screen and (max-width:480px){
+    .container{width: 90%;}
 }
