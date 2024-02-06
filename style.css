@@ -193,6 +193,7 @@ body {
 
     .container {
         height: auto;
+        margin-top: 2rem;
     }
 
     .list_content ul {
