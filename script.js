@@ -147,17 +147,16 @@ function checkWeather(city) {
         console.log(longitude);
         function day_4 (lat,lon){
 
-            // const url2 = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${api_key}`;
-            const url2 = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&appid=${api_key}`
+            const url2 = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${api_key}`;
             fetch(url2).then(k => k.json()).then(data2 => {
                 console.table(data2);
 
 
-                day_temp1.innerHTML = `${Math.round(data2.list[2].main.temp - 273.15)}°C`;
+                day_temp1.innerHTML = `${Math.round(data2.list[1].main.temp - 273.15)}°C`;
                 day_temp2.innerHTML = `${Math.round(data2.list[9].main.temp - 273.15)}°C`;
                 day_temp3.innerHTML = `${Math.round(data2.list[17].main.temp - 273.15)}°C`;
                 day_temp4.innerHTML = `${Math.round(data2.list[25].main.temp - 273.15)}°C`;
-                switch (data2.list[2].weather[0].main) {
+                switch (data2.list[1].weather[0].main) {
                     case "Clouds":
                         day_img1.src = "cloud.png";
                         break;
