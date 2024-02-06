@@ -147,7 +147,8 @@ function checkWeather(city) {
         console.log(longitude);
         function day_4 (lat,lon){
 
-            const url2 = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${api_key}`;
+            // const url2 = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${api_key}`;
+            const url2 = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&appid=${api_key}`
             fetch(url2).then(k => k.json()).then(data2 => {
                 console.table(data2);
 
@@ -272,8 +273,6 @@ function checkWeather(city) {
                         day_img4.src = "";
         
                 }
-        
-
             })
         }
 
@@ -290,7 +289,4 @@ document.f1.addEventListener("submit", (e) => {
     e.preventDefault();
     checkWeather(inputBox.value);
 })
-document.f2.addEventListener("submit", (e) => {
-    e.preventDefault();
-    checkWeather(inputBox.value);
-})
+

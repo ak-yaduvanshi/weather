@@ -33,6 +33,7 @@ body {
     border-radius: 25px;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.26);
     display: flex;
+    position: relative;
 }
 
 .default_info {
@@ -73,12 +74,12 @@ body {
     padding: 1.5rem;
 }
 
-.content_section form,.default_info form {
+.content_section form {
     margin: 1.5rem 0;
     display: flex;
 }
 
-.content_section form input,.default_info form input {
+.content_section form input {
     width: 84%;
     background: transparent;
     border: 1px solid #37474f;
@@ -90,7 +91,7 @@ body {
     text-transform: capitalize;
 }
 
-.content_section form button,.default_info form button {
+.content_section form button {
     padding: 1rem 0.7rem;
     font-size: 1.2rem;
     border: none;
@@ -118,7 +119,10 @@ body {
     background-clip: text;
     color: transparent;
 }
-.day_info span{font-size: 1.1rem;}
+
+.day_info span {
+    font-size: 1.1rem;
+}
 
 .list_content ul {
     display: flex;
@@ -151,29 +155,69 @@ body {
     object-fit: cover;
     height: auto;
 }
-.default_info form{display: none;}
-
 
 @media screen and (max-width:1220px) {
-    html{font-size: 14px;}
+    html {
+        font-size: 14px;
+    }
 }
-@media screen and (max-width:980px) {
 
-}
+@media screen and (max-width:980px) {}
+
 @media screen and (max-width:767px) {
-    html{font-size: 13px;}
-    .wrapper{width: 90%;}
+    html {
+        font-size: 13px;
+    }
+
+    .wrapper {
+        width: 90%;
+    }
 }
+
 @media screen and (max-width:480px) {
-    .content_section form{display: none;}
-    .default_info form{display: flex;}
-    .wrapper{display: block;}
-    .default_info{width: 100%;}
-    .default_info img{width: 40%;}
-    .default_info h1{font-size: 2.5rem;}
-    .container{height: auto;}
-    .list_content ul{flex-flow: wrap;border-radius: 15px;font-size: 1.5rem;}
-    .day_info{font-size: 1.5rem;}
-    .day_info span{font-size: 1.5rem;}
+    .wrapper {
+        display: block;
+    }
+
+    .default_info {
+        width: 100%;
+    }
+
+    .default_info img {
+        width: 40%;
+    }
+
+    .default_info h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        height: auto;
+    }
+
+    .list_content ul {
+        flex-flow: wrap;
+        border-radius: 15px;
+        font-size: 1.5rem;
+    }
+
+    .day_info {
+        font-size: 1.5rem;
+    }
+
+    .day_info span {
+        font-size: 1.5rem;
+    }
+
+    #form {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        left: 10px;
+    }
+    .default_info{padding-top: 70px;}
+    .list_content ul li{flex-direction: row;justify-content: space-around;}
+    .list_content ul{padding: .5rem;}
+
 
 }
