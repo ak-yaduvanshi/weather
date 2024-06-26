@@ -102,7 +102,7 @@ function checkWeather(city) {
             list.style.display = "none";
             return;
         }
-        list.style.display = "flex";
+        list.style.display = "block";
         document.querySelector(".error").style.display = "none";
 
         
