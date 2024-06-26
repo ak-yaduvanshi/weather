@@ -32,7 +32,7 @@ const day4 = document.querySelector(".day4");
 const list = document.querySelector(".list_content");
 const times = document.querySelector(".time");
 const content = document.querySelectorAll(".content");
-console.log(content);
+// console.log(content);
 
 const days = [
     "Sunday",
@@ -72,7 +72,7 @@ day4.innerHTML = dayNext4;
 
 // let dayNextA = dayNext1.slice(0,3);
 
-console.log(dayNext1, dayNext2, dayNext3, dayNext4);
+// console.log(dayNext1, dayNext2, dayNext3, dayNext4);
 
 
 
@@ -94,7 +94,7 @@ function checkWeather(city) {
 
 
         if (data.cod === `404`) {
-            content.forEach(i=>i.style.display="none")
+            content.forEach(i => i.style.display = "none")
             document.querySelector(".error").style.display = "block";
             temperature.innerHTML = `0°C`;
             description.innerHTML = `Overcast Clouds`
@@ -105,20 +105,20 @@ function checkWeather(city) {
         list.style.display = "block";
         document.querySelector(".error").style.display = "none";
 
-        
-        content.forEach(i=>i.style.display="flex")
+
+        content.forEach(i => i.style.display = "flex")
 
 
-        console.log(data);
+        // console.log(data);
 
 
         let time = new Date().getHours();
         let minute = new Date().getMinutes();
-        if(time<10){
-            time = "0"+time;
+        if (time < 10) {
+            time = "0" + time;
         }
-        if(minute<10){
-            minute = "0"+minute;
+        if (minute < 10) {
+            minute = "0" + minute;
         }
         times.innerHTML = `${time}:${minute}`
         // console.log(time, minute);
@@ -130,176 +130,35 @@ function checkWeather(city) {
         pressure.innerHTML = `${data.main.pressure} hPa`;
         wind_speed.innerHTML = `${data.wind.speed}Km/h`;
 
-
-
-
-        switch (data.weather[0].main) {
-            case "Clouds":
-                weather_img.src = "cloud.png";
-                break;
-            case "Clear":
-                weather_img.src = "clear.png";
-                break;
-            case "Rain":
-                weather_img.src = "rain.png";
-                break;
-            case "Mist":
-                weather_img.src = "mist.png";
-                break;
-            case "Snow":
-                weather_img.src = "snow.png";
-                break;
-            case "Smoke":
-                weather_img.src = "smoke.png";
-                break;
-            case "Haze":
-                weather_img.src = "haze.png";
-                break;
-            case "Fog":
-                weather_img.src = "fog.png";
-                break;
-            default:
-                weather_img.src = "";
-            // break;
-
-        }
+        weather_img.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
 
 
 
         const latitude = `${data.coord.lat}`;
         const longitude = `${data.coord.lon}`;
-        console.log(latitude);
-        console.log(longitude);
+        // console.log(latitude);
+        // console.log(longitude);
         function day_4(lat, lon) {
 
             // const url2 = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&appid=${api_key}`;
 
             const url2 = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=d84e2ede8dfb4fa7ab2478082360658d&units=I&days=5`;
             fetch(url2).then(k => k.json()).then(data2 => {
-                console.table(data2);
+                // console.table(data2);
 
 
                 day_temp1.innerHTML = `${Math.round((data2.data[1].temp - 32) * 5 / 9)}°C`;
                 day_temp2.innerHTML = `${Math.round((data2.data[2].temp - 32) * 5 / 9)}°C`;
                 day_temp3.innerHTML = `${Math.round((data2.data[3].temp - 32) * 5 / 9)}°C`;
                 day_temp4.innerHTML = `${Math.round((data2.data[4].temp - 32) * 5 / 9)}°C`;
-                switch (data2.data[1].weather.description) {
-                    case "Overcast clouds": case "Few clouds": case "Scattered clouds": case "Broken clouds":
-                        day_img1.src = "cloud.png";
-                        break;
-                    case "Clear Sky":
-                        day_img1.src = "clear.png";
-                        break;
-                    case "Moderate rain": case "Heavy rain":
-                        day_img1.src = "rain.png";
-                        break;
-                    case "Mist":
-                        day_img1.src = "mist.png";
-                        break;
-                    case "Snow":
-                        day_img1.src = "snow.png";
-                        break;
-                    case "Smoke":
-                        day_img1.src = "smoke.png";
-                        break;
-                    case "Haze":
-                        day_img1.src = "haze.png";
-                        break;
-                    case "Fog":
-                        day_img1.src = "fog.png";
-                        break;
-                    default:
-                        day_img1.src = "";
 
-                }
-                switch (data2.data[2].weather.description) {
-                    case "Overcast clouds": case "Few clouds": case "Scattered clouds": case "Broken clouds":
-                        day_img2.src = "cloud.png";
-                        break;
-                    case "Clear Sky":
-                        day_img2.src = "clear.png";
-                        break;
-                    case "Moderate rain": case "Heavy rain":
-                        day_img2.src = "rain.png";
-                        break;
-                    case "Mist":
-                        day_img2.src = "mist.png";
-                        break;
-                    case "Snow":
-                        day_img2.src = "snow.png";
-                        break;
-                    case "Smoke":
-                        day_img2.src = "smoke.png";
-                        break;
-                    case "Haze":
-                        day_img2.src = "haze.png";
-                        break;
-                    case "Fog":
-                        day_img2.src = "fog.png";
-                        break;
-                    default:
-                        day_img2.src = "";
 
-                }
-                switch (data2.data[3].weather.description) {
-                    case "Overcast clouds": case "Few clouds": case "Scattered clouds": case "Broken clouds":
-                        day_img3.src = "cloud.png";
-                        break;
-                    case "Clear Sky":
-                        day_img3.src = "clear.png";
-                        break;
-                    case "Moderate rain": case "Heavy rain":
-                        day_img3.src = "rain.png";
-                        break;
-                    case "Mist":
-                        day_img3.src = "mist.png";
-                        break;
-                    case "Snow":
-                        day_img3.src = "snow.png";
-                        break;
-                    case "Smoke":
-                        day_img3.src = "smoke.png";
-                        break;
-                    case "Haze":
-                        day_img3.src = "haze.png";
-                        break;
-                    case "Fog":
-                        day_img3.src = "fog.png";
-                        break;
-                    default:
-                        day_img3.src = "";
+                day_img1.src = `https://cdn.weatherbit.io/static/img/icons/${data2.data[1].weather.icon}.png`
+                day_img2.src = `https://cdn.weatherbit.io/static/img/icons/${data2.data[2].weather.icon}.png`
+                day_img3.src = `https://cdn.weatherbit.io/static/img/icons/${data2.data[3].weather.icon}.png`
+                day_img4.src = `https://cdn.weatherbit.io/static/img/icons/${data2.data[4].weather.icon}.png`
 
-                }
-                switch (data2.data[4].weather.description) {
-                    case "Overcast clouds": case "Few clouds": case "Scattered clouds": case "Broken clouds":
-                        day_img4.src = "cloud.png";
-                        break;
-                    case "Clear Sky":
-                        day_img4.src = "clear.png";
-                        break;
-                    case "Moderate rain": case "Heavy rain":
-                        day_img4.src = "rain.png";
-                        break;
-                    case "Mist":
-                        day_img4.src = "mist.png";
-                        break;
-                    case "Snow":
-                        day_img4.src = "snow.png";
-                        break;
-                    case "Smoke":
-                        day_img4.src = "smoke.png";
-                        break;
-                    case "Haze":
-                        day_img4.src = "haze.png";
-                        break;
-                    case "Fog":
-                        day_img4.src = "fog.png";
-                        break;
-                    default:
-                        day_img4.src = "";
-
-                }
             })
         }
 
